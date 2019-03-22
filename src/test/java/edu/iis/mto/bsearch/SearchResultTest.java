@@ -2,6 +2,7 @@ package edu.iis.mto.bsearch;
 
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 public class SearchResultTest {
@@ -11,7 +12,7 @@ public class SearchResultTest {
         int key = 15;
 
         SearchResult searchResult = BinarySearch.search(key, sequence);
-        assertTrue(searchResult.isFound());
+        assertThat(true, is(searchResult.isFound()));
     }
 
     @Test public void shouldReturnFalseIfThereIsNoKeyElementInSequence() {
@@ -19,7 +20,7 @@ public class SearchResultTest {
         int key = 14;
 
         SearchResult searchResult = BinarySearch.search(key, sequence);
-        assertFalse(searchResult.isFound());
+        assertThat(false, is(searchResult.isFound()));
     }
 
     @Test public void shouldReturnTrueIfKeyElementIsFirstInSequence() {
@@ -27,7 +28,7 @@ public class SearchResultTest {
         int key = 20;
 
         SearchResult searchResult = BinarySearch.search(key, sequence);
-        assertEquals(1, searchResult.getPosition());
+        assertThat(1, is(searchResult.getPosition()));
     }
 
     @Test public void shouldReturnTrueIfKeyElementIsLastInSequence() {
@@ -35,7 +36,7 @@ public class SearchResultTest {
         int key = 35;
 
         SearchResult searchResult = BinarySearch.search(key, sequence);
-        assertEquals(sequence.length, searchResult.getPosition());
+        assertThat(sequence.length, is(searchResult.getPosition()));
     }
 
     @Test public void shouldReturnTrueIfKeyElementIsInTheMiddleOfSequence() {
@@ -43,7 +44,7 @@ public class SearchResultTest {
         int key = 30;
 
         SearchResult searchResult = BinarySearch.search(key, sequence);
-        assertEquals(sequence.length / 2 + 1, searchResult.getPosition());
+        assertThat(sequence.length / 2 + 1, is(searchResult.getPosition()));
     }
 
     @Test public void shouldReturnFalseIfKeyElementIsNotInSequence() {
@@ -51,6 +52,6 @@ public class SearchResultTest {
         int key = 55;
 
         SearchResult searchResult = BinarySearch.search(key, sequence);
-        assertFalse(searchResult.isFound());
+        assertThat(false, is(searchResult.isFound()));
     }
 }
