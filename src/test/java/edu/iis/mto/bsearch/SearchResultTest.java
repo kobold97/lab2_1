@@ -67,4 +67,33 @@ public class SearchResultTest {
         exception.expect(IllegalArgumentException.class);
         BinarySearch.search(key, sequence);
     }
+
+    @Test
+    public void shouldReturnMinusOneIfKeyElementIsNotFoundOnSpecificPosition() {
+        int[] sequence = {5, 10, 15, 20, 25};
+        int key = 30;
+
+        SearchResult searchResult = BinarySearch.search(key, sequence);
+        assertThat(-1, is(searchResult.getPosition()));
+    }
+
+    @Test
+    public void shouldReturnCorrectPositionOfFoundElementInSequence() {
+        int[] sequence = {5, 10, 15, 20, 25, 30};
+        int key = 15;
+
+        SearchResult searchResult = BinarySearch.search(key, sequence);
+        assertThat(3, is(searchResult.getPosition()));
+    }
+
+    @Test
+    public void shouldReturnTrueIfBothSearchResultsAreEqual() {
+        int[] sequence = {5, 10, 15, 20, 25, 30};
+        int key = 15;
+
+        SearchResult firstSearchResult = BinarySearch.search(key, sequence);
+        SearchResult secondSearchResult = BinarySearch.search(key, sequence);
+
+        assertThat(firstSearchResult, is(secondSearchResult));
+    }
 }
