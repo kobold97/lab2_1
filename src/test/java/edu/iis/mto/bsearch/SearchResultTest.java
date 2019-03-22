@@ -83,4 +83,22 @@ public class SearchResultTest {
         BinarySearch.search(key, null);
     }
 
+    @Test
+    public void shouldReturnCorrectKeyPosition() {
+        int[] seq = {1, 2, 3, 4, 5, 6};
+        int key = 3;
+
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        Assert.assertThat(3, is(searchResult.getPosition()));
+    }
+
+    @Test
+    public void shouldReturnMinusOneIfKeyIsNotInSequence() {
+        int[] seq = {1, 2, 3, 4, 5, 6};
+        int key = 99;
+
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        Assert.assertThat(-1, is(searchResult.getPosition()));
+    }
+    
 }
