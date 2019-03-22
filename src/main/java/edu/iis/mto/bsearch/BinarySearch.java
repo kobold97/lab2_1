@@ -27,6 +27,7 @@ public class BinarySearch {
         int center;
         SearchResult result = new SearchResult();
 
+        // testy_v3 - wiedza nt implementacji tego algorytmu wplynie na dodanie ponizszego warunku
         if (seq.length == 0) {
             throw new IllegalArgumentException();
         }
