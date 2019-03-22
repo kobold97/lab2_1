@@ -5,7 +5,6 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class SearchResultTest {
-    
     @Test
     public void shouldReturnTrueIfKeyIsInOneElementSequence() {
         int[] seq = {1};
@@ -52,12 +51,13 @@ public class SearchResultTest {
     }
 
     @Test
-    public void shouldReturnFalseIfSequenceIsEmpty() {
-        int[] seq = {};
-        int key = 6;
+    public void shouldReturnTrueIfKeyIsInSequenceOnMidPosition() {
+        int[] seq = {1, 2, 3, 4, 5, 6};
+        int key = 3;
+
 
         SearchResult searchResult = BinarySearch.search(key, seq);
-        assertFalse(searchResult.isFound());
+        assertEquals(seq.length / 2, searchResult.getPosition());
     }
 
 }
