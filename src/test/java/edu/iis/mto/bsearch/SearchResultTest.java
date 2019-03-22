@@ -100,5 +100,6 @@ public class SearchResultTest {
         SearchResult searchResult = BinarySearch.search(key, seq);
         Assert.assertThat(-1, is(searchResult.getPosition()));
     }
-    
+    // wiedza o działąniu algorytmu pomogłaby w tworzeniu nowych testów,
+    // np test sprawdzający poprawnosc zwroconej pozycji dla tablicy z duplikatami (nie spełnia to warunków wejsciowych)
 }
