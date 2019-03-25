@@ -13,7 +13,7 @@ public class BinarySearchJUnitTests {
         boolean testValue = true;
         SearchResult searchResult;
         searchResult = BinarySearch.search(key, seq);
-        
+
         Assert.assertThat(searchResult.isFound(), is(testValue));
         Assert.assertThat(seq[searchResult.getPosition()], is(key));
     }
@@ -25,8 +25,9 @@ public class BinarySearchJUnitTests {
         int testPosition = -1;
         SearchResult searchResult = BinarySearch.search(key, seq);
 
-        Assert.assertEquals(testValue, searchResult.isFound());
-        Assert.assertEquals(testPosition, searchResult.getPosition());
+        Assert.assertThat(searchResult.isFound(), is(testValue));
+        Assert.assertThat(searchResult.getPosition(), is(testPosition));
+
     }
 
     @Test public void testIsFirstInSequence() {
