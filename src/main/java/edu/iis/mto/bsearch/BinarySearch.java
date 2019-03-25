@@ -27,12 +27,12 @@ public class BinarySearch {
         int center;
         SearchResult result = new SearchResult();
 
+        if (seq.length == 0){
+            throw new IllegalArgumentException();
+        }
         while (start <= end) {
             center = (start + end) / 2;
-            if (seq.length == 0){
-                throw new IllegalArgumentException();
-            }
-            else if (seq[center] == key) {
+            if (seq[center] == key) {
                 result.setPosition(center);
                 break;
             } else {

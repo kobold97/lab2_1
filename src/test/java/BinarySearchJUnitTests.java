@@ -78,7 +78,10 @@ public class BinarySearchJUnitTests {
         Assert.assertThat(searchResult.isFound(), is(testValue));
         Assert.assertThat(searchResult.getPosition(), is(testPosition));
 
+    }
 
+    @Test(expected = IllegalArgumentException.class) public void testEmptySequence() {
+        BinarySearch.search(0, new int[0]);
     }
 
 }
