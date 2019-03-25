@@ -48,8 +48,8 @@ public class BinarySearchJUnitTests {
         int testPosition = seq.length - 1;
         SearchResult searchResult = BinarySearch.search(key, seq);
 
-        Assert.assertEquals(testValue, searchResult.isFound());
-        Assert.assertEquals(testPosition, searchResult.getPosition());
+        Assert.assertThat(searchResult.isFound(), is(testValue));
+        Assert.assertThat(searchResult.getPosition(), is(testPosition));
     }
 
     @Test public void testIsInTheMiddleOfSequence() {
