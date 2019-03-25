@@ -3,6 +3,8 @@ import edu.iis.mto.bsearch.SearchResult;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.hamcrest.core.Is.is;
+
 public class BinarySearchJUnitTests {
 
     @Test public void testOneElementIsInSequence() {
@@ -11,9 +13,9 @@ public class BinarySearchJUnitTests {
         boolean testValue = true;
         SearchResult searchResult;
         searchResult = BinarySearch.search(key, seq);
-
-        Assert.assertEquals(testValue, searchResult.isFound());
-        Assert.assertEquals(key, seq[searchResult.getPosition()]);
+        
+        Assert.assertThat(searchResult.isFound(), is(testValue));
+        Assert.assertThat(seq[searchResult.getPosition()], is(key));
     }
 
     @Test public void testOneElementIsNotInSequence() {
