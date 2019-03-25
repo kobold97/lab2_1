@@ -16,4 +16,15 @@ public class BinarySearchJUnitTests {
         Assert.assertEquals(key, seq[searchResult.getPosition()]);
     }
 
+    @Test public void testOneElementIsNotInSequence() {
+        int key = 3;
+        int[] seq = {2};
+        boolean testValue = false;
+        int testPosition = -1;
+        SearchResult searchResult = BinarySearch.search(key, seq);
+
+        Assert.assertEquals(testValue, searchResult.isFound());
+        Assert.assertEquals(testPosition, searchResult.getPosition());
+    }
+
 }
