@@ -75,8 +75,10 @@ public class BinarySearchJUnitTests {
 
         SearchResult searchResult = BinarySearch.search(key, seq);
 
-        Assert.assertEquals(testValue, searchResult.isFound());
-        Assert.assertEquals(testPosition, searchResult.getPosition());
+        Assert.assertThat(searchResult.isFound(), is(testValue));
+        Assert.assertThat(searchResult.getPosition(), is(testPosition));
+
+
     }
 
 }
