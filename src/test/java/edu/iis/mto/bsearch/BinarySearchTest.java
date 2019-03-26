@@ -28,4 +28,12 @@ public class BinarySearchTest {
         seq = new int[]{key,2,3};
         assertEquals(1,BinarySearch.search(key,seq).getPosition());
     }
+
+    @Test public void KeyIsLastKeyInSeq() {
+        key = 4;
+        seq = new int[]{1,2,3,key};
+        assertEquals(4,BinarySearch.search(key,seq).getPosition());
+    }
+
+
 }
