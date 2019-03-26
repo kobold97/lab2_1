@@ -41,5 +41,8 @@ public class BinarySearchTest {
         assertEquals(3,BinarySearch.search(key,seq).getPosition());
     }
 
-
+    @Test public void NoKeyInSeq() {
+        seq = new int[]{2,3,4,10};
+        assertEquals(false,BinarySearch.search(key,seq).isFound());
+    }
 }
