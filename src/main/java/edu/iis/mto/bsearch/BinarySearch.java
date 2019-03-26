@@ -27,11 +27,14 @@ public class BinarySearch {
         int center;
         SearchResult result = new SearchResult();
 
+        if (seq.length == 0) {
+            throw new IllegalArgumentException();
+        }
+
         while (start <= end) {
             center = (start + end) / 2;
             if (seq[center] == key) {
-                result.setPosition(center + 1); // czy aby na pewno +1? Czy "== i takie, że seq[i] == key" nie oznacza
-                                                // indeksowania od 0?
+                result.setPosition(center);
                 break;
             } else {
                 if (seq[center] < key) {
