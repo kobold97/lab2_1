@@ -30,7 +30,8 @@ public class BinarySearch {
         while (start <= end) {
             center = (start + end) / 2;
             if (seq[center] == key) {
-                result.setPosition(center + 1);
+                result.setPosition(center + 1); // czy aby na pewno +1? Czy "== i takie, że seq[i] == key" nie oznacza
+                                                // indeksowania od 0?
                 break;
             } else {
                 if (seq[center] < key) {
