@@ -35,5 +35,11 @@ public class BinarySearchTest {
         assertEquals(4,BinarySearch.search(key,seq).getPosition());
     }
 
+    @Test public void KeyIsCenterKeyInSeq() {
+        key = 3;
+        seq = new int[]{1,2,key,6,7};
+        assertEquals(3,BinarySearch.search(key,seq).getPosition());
+    }
+
 
 }
