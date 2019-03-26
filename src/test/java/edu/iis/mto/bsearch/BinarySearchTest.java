@@ -15,4 +15,10 @@ public class BinarySearchTest {
         seq = new int[]{key};
         assertEquals(true,BinarySearch.search(key,seq).isFound());
     }
+
+    @Test public void keyNotInSeq() {
+        key = 1;
+        seq = new int[]{3};
+        assertEquals(false,BinarySearch.search(key,seq).isFound());
+    }
 }
