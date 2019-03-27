@@ -1,50 +1,64 @@
 package edu.iis.mto.bsearch;
 
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
 
+import static org.hamcrest.CoreMatchers.is;
+
 public class BinarySearchTest {
+
+    private int key;
+    private int[] seq;
+
+    @Before
+    public void setUp() throws Exception {
+        key = 1;
+    }
 
     @Test
     public void shouldReturnTrueIfElementIsFoundInOneElementSequence() {
         int[] seq = {1};
-        SearchResult sr = BinarySearch.search(1, seq);
-        Assert.assertTrue(sr.isFound());
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        Assert.assertThat(true, is(searchResult.isFound()));
     }
 
     @Test
     public void shouldReturnFalseIfElementIsNotFoundInOneElementSequence() {
         int[] seq = {2};
-        SearchResult sr = BinarySearch.search(1, seq);
-        Assert.assertFalse(sr.isFound());
+        SearchResult searchResult = BinarySearch.search(1, seq);
+        Assert.assertThat(false, is(searchResult.isFound()));
     }
 
     @Test
     public void shouldReturnTrueIfElementIsFoundInTheBeginning() {
-        int[] seq = {1, 2, 3, 4};
-        SearchResult sr = BinarySearch.search(1, seq);
-        Assert.assertTrue(sr.isFound());
+        int[] seq = {key, 2, 3, 4, 5};
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        Assert.assertThat(1, is(searchResult.getPosition()));
     }
 
     @Test
     public void shouldReturnTrueIfElementIsFoundInTheEnd() {
-        int[] seq = {1, 2, 3, 4};
-        SearchResult sr = BinarySearch.search(4, seq);
-        Assert.assertTrue(sr.isFound());
+        key = 5;
+        int[] seq = {1, 2, 3, 4, key};
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        Assert.assertThat(5, is(searchResult.getPosition()));
     }
 
     @Test
     public void shouldReturnTrueIfElementIsFoundInTheMiddle() {
-        int[] seq = {1, 2, 3, 4};
-        SearchResult sr = BinarySearch.search(2, seq);
-        Assert.assertTrue(sr.isFound());
+        key = 3;
+        int[] seq = {1, 2, key, 4, 5};
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        Assert.assertThat(3, is(searchResult.getPosition()));
     }
 
     @Test
     public void shouldReturnFalseIfElementIsNotFound() {
-        int[] seq = {1, 2, 3, 4};
-        SearchResult sr = BinarySearch.search(0, seq);
-        Assert.assertFalse(sr.isFound());
+        key = 0;
+        int[] seq = {1, 2, 3, 4, 5};
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        Assert.assertThat(false, is(searchResult.isFound()));
     }
 }
