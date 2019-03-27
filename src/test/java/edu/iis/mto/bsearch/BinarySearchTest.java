@@ -46,4 +46,10 @@ public class BinarySearchTest {
         seq = new int[]{2,3,4,10};
         assertThat(false,is(BinarySearch.search(key,seq).isFound()));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void KeyWhenSeqSizeIs0() {
+        seq = new int[0];
+        BinarySearch.search(key,seq);
+    }
 }
