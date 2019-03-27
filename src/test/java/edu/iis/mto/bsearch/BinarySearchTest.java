@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.*;
 
 public class BinarySearchTest {
@@ -51,5 +52,10 @@ public class BinarySearchTest {
     public void KeyWhenSeqSizeIs0() {
         seq = new int[0];
         BinarySearch.search(key,seq);
+    }
+
+    @Test public void ForUnsortedArrayKeyIsNotFound() {
+        seq = new int[]{5,3,1000,key,8,2};
+        assertThat(true,not(BinarySearch.search(key,seq).isFound()));
     }
 }
