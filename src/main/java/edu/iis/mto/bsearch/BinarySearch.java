@@ -22,11 +22,13 @@ public class BinarySearch {
 	 *         znaleziony -1)
 	 */
 	public static SearchResult search(int key, int[] seq) {
+		if (seq.length == 0)
+			throw new IllegalArgumentException("Sequence must have elements");
+
 		int start = 0;
 		int end = seq.length - 1;
 		int center;
 		SearchResult result = new SearchResult();
-
 		while (start <= end) {
 			center = (start + end) / 2;
 			if (seq[center] == key) {

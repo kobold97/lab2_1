@@ -2,6 +2,7 @@ package lab2_1;
 
 import org.junit.Test;
 import org.junit.Assert;
+import static org.hamcrest.CoreMatchers.is;
 
 import edu.iis.mto.bsearch.BinarySearch;
 import edu.iis.mto.bsearch.SearchResult;
@@ -14,7 +15,7 @@ public class BinarySearchTest {
 		int[] seq = { 1 };
 
 		SearchResult searchResult = BinarySearch.search(key, seq);
-		Assert.assertEquals(1, searchResult.getPosition());
+		Assert.assertThat(searchResult.getPosition(), is(1));
 	}
 
 	@Test
@@ -23,7 +24,7 @@ public class BinarySearchTest {
 		int[] seq = { 1 };
 
 		SearchResult searchResult = BinarySearch.search(key, seq);
-		Assert.assertEquals(-1, searchResult.getPosition());
+		Assert.assertThat(searchResult.isFound(), is(false));
 	}
 
 	@Test
@@ -32,16 +33,16 @@ public class BinarySearchTest {
 		int[] seq = { 1, 2, 3, 4, 5 };
 
 		SearchResult searchResult = BinarySearch.search(key, seq);
-		Assert.assertEquals(1, searchResult.getPosition());
+		Assert.assertThat(searchResult.getPosition(), is(1));
 	}
 
 	@Test
 	public void testSearchResult_seqLengthGreaterThanOne_keyIsMiddleElementInSeq() {
-		int key = 3;
-		int[] seq = { 1, 2, 3, 4, 5 };
+		int key = 7;
+		int[] seq = { 1, 2, 7, 10, 11 };
 
 		SearchResult searchResult = BinarySearch.search(key, seq);
-		Assert.assertEquals(3, searchResult.getPosition());
+		Assert.assertThat(searchResult.getPosition(), is(3));
 	}
 
 	@Test
@@ -50,7 +51,7 @@ public class BinarySearchTest {
 		int[] seq = { 1, 2, 3, 4, 5 };
 
 		SearchResult searchResult = BinarySearch.search(key, seq);
-		Assert.assertEquals(5, searchResult.getPosition());
+		Assert.assertThat(searchResult.getPosition(), is(seq.length));
 	}
 
 	@Test
@@ -59,6 +60,15 @@ public class BinarySearchTest {
 		int[] seq = { 1, 2, 3, 4, 5 };
 
 		SearchResult searchResult = BinarySearch.search(key, seq);
-		Assert.assertEquals(-1, searchResult.getPosition());
+		Assert.assertThat(searchResult.isFound(), is(false));
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void testSearchResult_emptySequence() {
+		int key = 2;
+		int[] seq = {};
+
+		SearchResult searchResult = BinarySearch.search(key, seq);
+		searchResult.toString();
 	}
 }
