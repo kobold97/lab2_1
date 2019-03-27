@@ -67,4 +67,11 @@ public class BinarySearchTest {
         seq = new int[0];
         BinarySearch.search(key, seq);
     }
+
+    @Test
+    public void shouldReturnFalseIfSequenceIsNotSorted() {
+        int[] seq = {5, 2, 3, key, 9, 8};
+        SearchResult searchResult = BinarySearch.search(key, seq);
+        Assert.assertThat(false, is(searchResult.isFound()));
+    }
 }
