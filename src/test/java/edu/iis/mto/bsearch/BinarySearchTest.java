@@ -19,21 +19,21 @@ public class BinarySearchTest {
 
     @Test
     public void shouldReturnTrueIfElementIsFoundInOneElementSequence() {
-        int[] seq = {1};
+        seq = new int[] {1};
         SearchResult searchResult = BinarySearch.search(key, seq);
         Assert.assertThat(true, is(searchResult.isFound()));
     }
 
     @Test
     public void shouldReturnFalseIfElementIsNotFoundInOneElementSequence() {
-        int[] seq = {2};
+        seq = new int[] {2};
         SearchResult searchResult = BinarySearch.search(1, seq);
         Assert.assertThat(false, is(searchResult.isFound()));
     }
 
     @Test
     public void shouldReturnTrueIfElementIsFoundInTheBeginning() {
-        int[] seq = {key, 2, 3, 4, 5};
+        seq = new int[] {key, 2, 3, 4, 5};
         SearchResult searchResult = BinarySearch.search(key, seq);
         Assert.assertThat(1, is(searchResult.getPosition()));
     }
@@ -41,7 +41,7 @@ public class BinarySearchTest {
     @Test
     public void shouldReturnTrueIfElementIsFoundInTheEnd() {
         key = 5;
-        int[] seq = {1, 2, 3, 4, key};
+        seq = new int[] {1, 2, 3, 4, key};
         SearchResult searchResult = BinarySearch.search(key, seq);
         Assert.assertThat(5, is(searchResult.getPosition()));
     }
@@ -49,7 +49,7 @@ public class BinarySearchTest {
     @Test
     public void shouldReturnTrueIfElementIsFoundInTheMiddle() {
         key = 3;
-        int[] seq = {1, 2, key, 4, 5};
+        seq = new int[] {1, 2, key, 4, 5};
         SearchResult searchResult = BinarySearch.search(key, seq);
         Assert.assertThat(3, is(searchResult.getPosition()));
     }
@@ -57,8 +57,14 @@ public class BinarySearchTest {
     @Test
     public void shouldReturnFalseIfElementIsNotFound() {
         key = 0;
-        int[] seq = {1, 2, 3, 4, 5};
+        seq = new int[] {1, 2, 3, 4, 5};
         SearchResult searchResult = BinarySearch.search(key, seq);
         Assert.assertThat(false, is(searchResult.isFound()));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void shouldThrowExceptionIfSequenceIsEmpty() {
+        seq = new int[0];
+        BinarySearch.search(key, seq);
     }
 }
