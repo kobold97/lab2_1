@@ -9,49 +9,49 @@ import org.junit.Test;
 public class BinarySearchTest {
 
 	@Test
-	public void onlyOneGoodElementIsInTheSequence() {
+	public void onlyOneGoodElementIsInTheSequence() throws Exception {
 		int[] seq = { 1 };
 		assertThat((BinarySearch.search(1, seq).isFound() == true && BinarySearch.search(1, seq).getPosition() == 0),
 				is(true));
 	}
 
 	@Test
-	public void onlyOneBadElementIsInTheSequence() {
+	public void onlyOneBadElementIsInTheSequence() throws Exception {
 		int[] seq = { 1 };
 		assertThat((BinarySearch.search(2, seq).isFound() == false && BinarySearch.search(2, seq).getPosition() == -1),
 				is(true));
 	}
 
 	@Test
-	public void multipleElementsSequenceWithGoodElementAtTheBeggining() {
+	public void multipleElementsSequenceWithGoodElementAtTheBeggining() throws Exception {
 		int[] seq = { 1, 2, 3, 4 };
 		assertThat((BinarySearch.search(1, seq).isFound() == true && BinarySearch.search(1, seq).getPosition() == 0),
 				is(true));
 	}
 
 	@Test
-	public void multipleElementsSequenceWithGoodElementInTheMiddle() {
+	public void multipleElementsSequenceWithGoodElementInTheMiddle() throws Exception {
 		int[] seq = { 1, 2, 3, 4, 5 };
 		assertThat((BinarySearch.search(3, seq).isFound() == true && BinarySearch.search(3, seq).getPosition() == 2),
 				is(true));
 	}
 
 	@Test
-	public void multipleElementsSequenceWithGoodElementAtTheEnd() {
+	public void multipleElementsSequenceWithGoodElementAtTheEnd() throws Exception {
 		int[] seq = { 1, 2, 3, 4 };
 		assertThat((BinarySearch.search(4, seq).isFound() == true && BinarySearch.search(4, seq).getPosition() == 3),
 				is(true));
 	}
 
 	@Test
-	public void multipleElementsSequenceWithBadElement() {
+	public void multipleElementsSequenceWithBadElement() throws Exception {
 		int[] seq = { 1, 2, 3, 4 };
 		assertThat((BinarySearch.search(8, seq).isFound() == false && BinarySearch.search(8, seq).getPosition() == -1),
 				is(true));
 	}
 
 	@Test(expected = IllegalArgumentException.class)
-	public void throwsIllegalArgumentException() {
+	public void throwsIllegalArgumentException() throws Exception {
 		int[] seq = {};
 		BinarySearch.search(2, seq);
 	}
