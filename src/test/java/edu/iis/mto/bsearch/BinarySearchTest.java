@@ -40,11 +40,11 @@ public class BinarySearchTest {
 
     @Test
     public void multipleElementsSequenceWithGoodElementInTheMiddle() throws Exception {
-        int[] seq = {4, 5, 6, 7};
-        assertThat((BinarySearch.search(7, seq)
+        int[] seq = {4, 5, 6, 7, 8};
+        assertThat((BinarySearch.search(8, seq)
                                 .isFound() == true
-                    && BinarySearch.search(7, seq)
-                                   .getPosition() == 3),
+                    && BinarySearch.search(8, seq)
+                                   .getPosition() == 4),
                 is(true));
     }
 
